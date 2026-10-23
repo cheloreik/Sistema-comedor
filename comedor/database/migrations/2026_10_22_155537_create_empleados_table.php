@@ -12,8 +12,36 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('empleados', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        $table->id();
+
+        $table->string('codigo')->unique();
+
+        $table->string('nombres');
+
+        $table->string('apellidos');
+
+        $table->string('ci')->unique();
+
+        $table->string('correo')->unique();
+
+        $table->string('telefono')->nullable();
+
+        $table->string('area');
+
+        $table->string('cargo');
+
+        $table->date('fecha_ingreso');
+
+        $table->decimal('credito_disponible',10,2)
+              ->default(0);
+
+        $table->enum(
+            'estado',
+            ['Activo','Inactivo']
+        )->default('Activo');
+
+        $table->timestamps(); 
+
         });
     }
 

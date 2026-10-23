@@ -43,12 +43,15 @@ Route::post('/login', [AuthController::class, 'login'])
 
 Route::post('/logout', [AuthController::class, 'logout'])
     ->name('logout');
-    
+
 
 //Route::resource('empleados', EmpleadoController::class);
 
 Route::get('/empleados', [EmpleadoController::class, 'index'])
     ->name('empleados.index');
+
+Route::resource('empleados', EmpleadoController::class);
+
 
 Route::resource('familiares', FamiliarController::class);
 Route::resource('reservas', ReservaController::class);

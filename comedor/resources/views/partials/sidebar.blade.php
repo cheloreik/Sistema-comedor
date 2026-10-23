@@ -8,18 +8,9 @@
     <ul class="menu">
 
 <!--PARA QUE SE MUESTRE NOMBRE Y ROL EN EL SIDEDAR-->
-    <div class="mt-3">
 
-    <strong>{{ auth()->user()->name }}</strong>
-
-    <br>
-
-    <small>
-        {{ auth()->user()->rol }}
-    </small>
-
-    </div>
-
+ 
+<!--PARA QUE SE MUESTRE NOMBRE Y ROL EN EL SIDEDAR-->
 
 
         <li>

@@ -181,11 +181,6 @@
 </form>
 
 
-
-
-
-
-
                 <div class="text-center mt-4 text-secondary">
                     🔒 Acceso exclusivo para personal autorizado
                 </div>

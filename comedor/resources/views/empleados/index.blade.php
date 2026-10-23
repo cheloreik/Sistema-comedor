@@ -14,7 +14,13 @@
 
     <div>
         <button class="btn btn-primary">
-            Nuevo Empleado
+            <a href="{{ route('empleados.create') }}"
+                class="btn btn-primary">
+                + Nuevo Empleado
+            </a>
+        
+
+
         </button>
     </div>
 
@@ -59,10 +65,11 @@
 
                 <tr>
                     <th>Código</th>
-                    <th>Nombre</th>
+                    <th>Empleado</th>
                     <th>Área</th>
                     <th>Cargo</th>
                     <th>Estado</th>
+                    <th>Crédito</th>
                     <th>Acciones</th>
                 </tr>
 
@@ -70,25 +77,57 @@
 
             <tbody>
 
-                <tr>
+  @foreach($empleados as $empleado)
 
-                    <td>EMP-001</td>
-                    <td>Carlos Mendoza</td>
-                    <td>Operaciones</td>
-                    <td>Supervisor</td>
+        <tr>
 
-                    <td>
-                        <span class="badge bg-success">
-                            Activo
-                        </span>
-                    </td>
+            <td>{{ $empleado->codigo }}</td>
 
-                    <td>
-                        <a href="#">Editar</a> |
-                        <a href="#">Detalle</a>
-                    </td>
+            <td>
+                {{ $empleado->nombres }}
+                {{ $empleado->apellidos }}
+            </td>
 
-                </tr>
+            <td>{{ $empleado->area }}</td>
+
+            <td>{{ $empleado->cargo }}</td>
+
+            <td>{{ $empleado->estado }}</td>
+
+
+<!--para la edicion de los datos empleados-->            
+     <td>
+    <a href="{{ route('empleados.edit', $empleado->id) }}"
+       class="btn btn-warning btn-sm">
+        Editar
+    </a>
+
+    <form action="{{ route('empleados.destroy', $empleado->id) }}"
+          method="POST"
+          style="display:inline-block;">
+
+        @csrf
+        @method('DELETE')
+
+        <button type="submit"
+                class="btn btn-danger btn-sm"
+                onclick="return confirm('¿Desea eliminar este empleado?')">
+            Eliminar
+        </button>
+
+    </form>
+</td>
+
+                <td>
+                Bs.
+                {{ $empleado->credito_disponible }}
+            </td>
+
+        </tr>
+
+        @endforeach
+
+             
 
             </tbody>
 
