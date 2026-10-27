@@ -5,49 +5,50 @@
         <small>ESPACIO DE TRABAJO</small>
     </div>
 
-    <ul class="menu">
+    <ul class="menu ovverflow-y-auto">
 
 <!--PARA QUE SE MUESTRE NOMBRE Y ROL EN EL SIDEDAR-->
 
  
 <!--PARA QUE SE MUESTRE NOMBRE Y ROL EN EL SIDEDAR-->
+        
 
 
         <li>
             <a href="{{ route('dashboard') }}">
-                🏠 Inicio
+                <i class="fas fa-home"></i> Inicio
             </a>
         </li>
 
         <li>
             <a href="{{ route('empleados.index') }}"
                class="{{ request()->routeIs('empleados.*') ? 'active' : '' }}">
-                👥 Gestión de Empleados
+                <i class="fas fa-user"></i> Gestión de Empleados
             </a>
         </li>
 
         <li>
             <a href="{{ route('familiares.index') }}">
-                👨‍👩‍👧 Gestión de Familiares
+                <i class="fas fa-user-friends"></i> Gestión de Familiares
             </a>
         </li>
 
         <li>
             <a href="{{ route('menus.index') }}">
-                🍽 Gestión de Menús
+                <i class="fas fa-utensils"></i> Gestión de Menús
             </a>
         </li>
 
     
         <li>
             <a href="{{ route('reservas.index') }}">
-                📅 Reservas
+                <i class="fas fa-calendar-alt"></i> Reservas
             </a>
         </li>
 
         <li>
             <a href="{{ route('usuarios.index') }}">
-                🛡 Usuarios
+                <i class="fas fa-users"></i> Usuarios
             </a>
         </li>
 
@@ -58,15 +59,23 @@
         </li>
 
         <li>
-    <a href="{{ route('entregas.index') }}">
-       🍱 Entrega de Comidas
-    </a>
-</li>
+            <a href="{{ route('entregas.index') }}">
+            <i class="fas fa-box"></i> Entrega de Comidas
+            </a>
+        </li>
 
         <li>
             <a href="{{ route('configuracion.index') }}">
-                ⚙ Configuración
+                <i class="fas fa-cog"></i> Configuración
             </a>
+        </li>
+      <li class="nav-item">
+            <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                @csrf
+            </form>
+            <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Session
+                </a>
         </li>
 
     </ul>
@@ -74,7 +83,7 @@
     <div class="help-box">
 
         <h6>¿Necesitas ayuda?</h6>
-
+ 
         <p>
             El equipo de soporte está para ti.
         </p>

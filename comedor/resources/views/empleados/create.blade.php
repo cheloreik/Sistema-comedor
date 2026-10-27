@@ -115,8 +115,7 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Estado</label>
 
-                        <select name="estado"
-              select">
+                        <select name="estado" class="form-control">
 
                             <option value="Activo">
                                 Activo
@@ -137,10 +136,13 @@
                             class="btn btn-success">
                         Guardar Empleado
                     </button>
-                            <button type="submit"
-                            class="btn btn-success">
-                        Cancelar
-                    </button>
+                    <a href="{{ route('empleados.index') }}">
+                        <button type="button"
+                            class="btn btn-light">
+                            Cancelar
+                        </button>
+                    </a>
+                    
 
                      
                     </a>
