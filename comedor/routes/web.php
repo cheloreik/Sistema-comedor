@@ -11,6 +11,7 @@ use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\EntregaController;
 // se quieta para que se vaya directo al dashborad para realizar pruebas
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MisReservasController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])
     ->name('login');
@@ -77,4 +78,10 @@ Route::resource('entregas', EntregaController::class);
 Route::view('/configuracion', 'configuracion.index')
     ->name('configuracion.index');
 
-Route::resource('familiares', FamiliarController::class);
+
+
+// para los datos que se tiene que realizar la reserva
+Route::get('/mis-reservas', [
+    MisReservasController::class,
+    'index'
+])->name('mis-reservas.index');

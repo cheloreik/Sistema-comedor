@@ -18,9 +18,12 @@ return new class extends Migration
               ->constrained('empleados')
               ->onDelete('cascade');
 
-        $table->string('codigo');
-        $table->string('nombre');
+        $table->string('nombres');
+        $table->string('apellidos');
+        $table->string('ci');
         $table->string('parentesco');
+        $table->date('fecha_nacimiento');
+        $table->string('telefono')->nullable();
         $table->string('estado')->default('Activo');
 
         $table->timestamps();

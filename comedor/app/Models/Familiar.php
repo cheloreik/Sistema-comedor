@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Familiar extends Model
 {
-    protected $table = 'familiares';
-
-    public function empleado()
-    {
-        return $this->belongsTo(Empleado::class);
-    }
-
-
-    }
+    protected $table = 'familiares';    
+    protected $fillable = [
+        'empleado_id',
+        'nombres',
+        'apellidos',
+        'ci',
+        'parentesco',
+        'fecha_nacimiento',
+        'telefono',
+        'estado'
+    ];
+}
