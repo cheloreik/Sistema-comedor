@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleado;
 use App\Models\Familiar;
 use Illuminate\Http\Request;
 
@@ -22,33 +23,36 @@ class FamiliarController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-   public function create(Empleado $empleado)
-    {
-        return view('familiares.create', compact('empleado'));
-    }
+
+    public function create()
+{
+    $empleados = Empleado::all();
+
+    return view(
+        'familiares.create',
+        compact('empleados')
+    );
+}
 
     /**
      * Store a newly created resource in storage.
      */
-   public function store(Request $request, Empleado $empleado)
-    {
-        $request->validate([
-            'codigo' => 'required|string|max:50|unique:familiares,codigo',
-            'nombre' => 'required|string|max:255',
-            'parentesco' => 'required|string|max:100',
-            'estado' => 'required|string|in:Activo,Inactivo',
-        ]);
+        public function store(Request $request)
+        {
+            Familiar::create([
 
-        $empleado->familiares()->create([
-            'codigo' => $request->codigo,
-            'nombre' => $request->nombre,
-            'parentesco' => $request->parentesco,
-            'estado' => $request->estado,
-        ]);
+                'empleado_id' => $request->empleado_id,
+                'codigo'      => $request->codigo,
+                'nombre'      => $request->nombre,
+                'parentesco'  => $request->parentesco,
+                'estado'      => $request->estado,
 
-        return redirect()->route('empleados.show', $empleado->id)
-                         ->with('success', 'Familiar registrado correctamente.');
-    }
+            ]);
+
+            return redirect()
+                ->route('familiares.index')
+                ->with('success', 'Familiar registrado correctamente');
+        }
     /**
      * Display the specified resource.
      */
