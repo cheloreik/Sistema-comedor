@@ -68,29 +68,33 @@
 
             </thead>
 
-            <tbody>
+        <tbody>
+    @foreach($familiares as $familiar)
+        <tr>
+            <td>{{ $familiar->codigo }}</td>
 
-                <tr>
+            <td>{{ $familiar->nombre }}</td>
 
-                    <td>EMP-001</td>
-                    <td>karen Mendoza</td>
-                    <td>Esposa</td>
-                    <td>carlos Mendoza</td>
+            <td>{{ $familiar->parentesco }}</td>
 
-                    <td>
-                        <span class="badge bg-success">
-                            Activo
-                        </span>
-                    </td>
+            <td>
+                {{ $familiar->empleado->nombres }}
+                {{ $familiar->empleado->apellidos }}
+            </td>
 
-                    <td>
-                        <a href="#">Editar</a> |
-                        <a href="#">Detalle</a>
-                    </td>
+            <td>
+                <span class="badge bg-success">
+                    {{ $familiar->estado }}
+                </span>
+            </td>
 
-                </tr>
-
-            </tbody>
+            <td>
+                <a href="#">Editar</a> |
+                <a href="#">Detalle</a>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
 
         </table>
 

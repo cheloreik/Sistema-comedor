@@ -12,25 +12,43 @@ class FamiliarController extends Controller
      */
     public function index()
     {
-        return view('familiares.index');
+    
+        $familiares = Familiar::all();
+
+    return view('familiares.index', compact('familiares'));
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+   public function create(Empleado $empleado)
     {
-        //
+        return view('familiares.create', compact('empleado'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+   public function store(Request $request, Empleado $empleado)
     {
-        //
-    }
+        $request->validate([
+            'codigo' => 'required|string|max:50|unique:familiares,codigo',
+            'nombre' => 'required|string|max:255',
+            'parentesco' => 'required|string|max:100',
+            'estado' => 'required|string|in:Activo,Inactivo',
+        ]);
 
+        $empleado->familiares()->create([
+            'codigo' => $request->codigo,
+            'nombre' => $request->nombre,
+            'parentesco' => $request->parentesco,
+            'estado' => $request->estado,
+        ]);
+
+        return redirect()->route('empleados.show', $empleado->id)
+                         ->with('success', 'Familiar registrado correctamente.');
+    }
     /**
      * Display the specified resource.
      */
@@ -42,18 +60,37 @@ class FamiliarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    // Mostrar formulario de edición
     public function edit(Familiar $familiar)
     {
-        //
+        return view('familiares.edit', compact('familiar'));
+    }
+
+    // Actualizar el familiar en la BD
+    public function update(Request $request, Familiar $familiar)
+    {
+        $request->validate([
+            'codigo' => 'required|string|max:50|unique:familiares,codigo,' . $familiar->id,
+            'nombre' => 'required|string|max:255',
+            'parentesco' => 'required|string|max:100',
+            'estado' => 'required|string|in:Activo,Inactivo',
+        ]);
+
+        $familiar->update([
+            'codigo' => $request->codigo,
+            'nombre' => $request->nombre,
+            'parentesco' => $request->parentesco,
+            'estado' => $request->estado,
+        ]);
+
+        return redirect()->route('empleados.show', $familiar->empleado_id)
+                         ->with('success', 'Familiar actualizado correctamente.');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Familiar $familiar)
-    {
-        //
-    }
+  
 
     /**
      * Remove the specified resource from storage.
@@ -62,4 +99,7 @@ class FamiliarController extends Controller
     {
         //
     }
+
+
+
 }

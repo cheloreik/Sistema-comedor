@@ -9,13 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('familiars', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+   public function up(): void
+{
+    Schema::create('familiares', function (Blueprint $table) {
+        $table->id();
+
+        $table->foreignId('empleado_id')
+              ->constrained('empleados')
+              ->onDelete('cascade');
+
+        $table->string('codigo');
+        $table->string('nombre');
+        $table->string('parentesco');
+        $table->string('estado')->default('Activo');
+
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
