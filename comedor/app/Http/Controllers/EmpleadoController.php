@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 
 class EmpleadoController extends Controller
 {
@@ -42,9 +45,10 @@ class EmpleadoController extends Controller
         return redirect()->route('empleados.index');
     }
 
-    public function store(Request $request)
+public function store(Request $request)
 {
-    Empleado::create([
+    $empleado = Empleado::create([
+
         'codigo' => $request->codigo,
         'nombres' => $request->nombres,
         'apellidos' => $request->apellidos,
@@ -56,14 +60,27 @@ class EmpleadoController extends Controller
         'fecha_ingreso' => $request->fecha_ingreso,
         'credito_disponible' => $request->credito_disponible,
         'estado' => $request->estado,
+
+    ]);
+
+    User::create([
+
+    'name' => $empleado->nombres.' '.$empleado->apellidos,
+
+    'email' => $empleado->correo,
+
+    'password' => Hash::make('123456'),  // para que ellos gestionen su contraseña
+
+    'rol' => 'empleado',
+
+    'empleado_id' => $empleado->id,
+
     ]);
 
     return redirect()
         ->route('empleados.index')
-        ->with('success', 'Empleado registrado correctamente');
+        ->with('success','Empleado creado correctamente');
 }
-
-
 
 
 }

@@ -12,136 +12,51 @@
     </div>
 
     <button class="btn btn-primary">
-        + Nuevo menú
+        {{ route('menus.create') }}
     </button>
 
+    
 </div>
 
 <div class="row">
 
     <!-- FORMULARIO -->
-    <div class="col-lg-8">
+    <table class="table">
 
-        <div class="card shadow-sm">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Plato Principal</th>
+            <th>Cupos</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
 
-            <div class="card-body">
+    <tbody>
 
-                <h4>Información del menú</h4>
+    @foreach($menus as $menu)
 
-                <div class="row mt-4">
+        <tr>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Fecha</label>
-                        <input type="date" class="form-control">
-                    </div>
+            <td>{{ $menu->fecha }}</td>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Cupo disponible</label>
-                        <input type="number" class="form-control">
-                    </div>
+            <td>{{ $menu->plato_principal }}</td>
 
-                    <div class="col-12 mb-3">
-                        <label class="form-label">Plato principal</label>
-                        <input type="text" class="form-control">
-                    </div>
+            <td>{{ $menu->cupo_disponible }}</td>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Guarnición</label>
-                        <input type="text" class="form-control">
-                    </div>
+            <td>{{ $menu->estado }}</td>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Ensalada</label>
-                        <input type="text" class="form-control">
-                    </div>
+        </tr>
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Bebida</label>
-                        <input type="text" class="form-control">
-                    </div>
+    @endforeach
 
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Postre</label>
-                        <input type="text" class="form-control">
-                    </div>
+    </tbody>
 
-                </div>
+</table>
 
-                <div class="alert alert-primary">
-                    Capacidad total: 320 raciones · 284 reservas.
-                </div>
 
-                <div class="text-end">
 
-                    <button class="btn btn-outline-primary">
-                        Guardar
-                    </button>
 
-                    <button class="btn btn-primary">
-                        Publicar Menú
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- VISTA PREVIA -->
-    <div class="col-lg-4">
-
-        <div class="card shadow-sm">
-
-            <div class="card-body">
-
-                <h4>Vista previa</h4>
-
-                <img
-                    src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=800"
-                    class="img-fluid rounded my-3"
-                    alt="Menú del día">
-
-                <h3>Pollo al horno</h3>
-
-                <p class="text-secondary">
-                    Jueves 15 Oct · 12:00 a 14:30
-                </p>
-
-                <ul class="list-group">
-
-                    <li class="list-group-item">
-                        Guarnición: Arroz primavera
-                    </li>
-
-                    <li class="list-group-item">
-                        Ensalada: Ensalada mixta
-                    </li>
-
-                    <li class="list-group-item">
-                        Bebida: Limonada
-                    </li>
-
-                    <li class="list-group-item">
-                        Postre: Gelatina de frutas
-                    </li>
-
-                </ul>
-
-                <h2 class="text-primary mt-3 text-end">
-                    36
-                </h2>
-
-                <small>Cupos disponibles</small>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 
 <!-- PLANIFICACIÓN -->
 

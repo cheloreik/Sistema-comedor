@@ -10,17 +10,21 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-         return view('menus.index');
-    }
+ public function index()
+{
+    $menus = Menu::all();
 
+    return view(
+        'menus.index',
+        compact('menus')
+    );
+}
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('menus.create');
     }
 
     /**
@@ -28,9 +32,26 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Menu::create([
 
+            'fecha' => $request->fecha,
+            'cupo_disponible' => $request->cupo_disponible,
+            'plato_principal' => $request->plato_principal,
+            'guarnicion' => $request->guarnicion,
+            'ensalada' => $request->ensalada,
+            'bebida' => $request->bebida,
+            'postre' => $request->postre,
+            'estado' => 'Borrador'
+
+        ]);
+
+        return redirect()
+            ->route('menus.index')
+            ->with(
+                'success',
+                'Menú registrado correctamente'
+            );
+    }
     /**
      * Display the specified resource.
      */
