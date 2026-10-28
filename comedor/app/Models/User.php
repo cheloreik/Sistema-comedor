@@ -25,6 +25,7 @@ class User extends Authenticatable
         'ci',
         'telefono',
         'area',
+        'role',
         'cargo',
         'fecha_ingreso',
         'credito_disponible',

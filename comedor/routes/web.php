@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 
+Route::redirect('/', '/login');
 
 
 
@@ -41,44 +42,26 @@ Route::get('/login', [AuthController::class, 'showLogin'])
 
 Route::post('/login', [AuthController::class, 'login'])
     ->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/logout', [AuthController::class, 'logout'])
-    ->name('logout');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/empleados', [EmpleadoController::class, 'index'])->name('empleados.index');
+    Route::resource('empleados', EmpleadoController::class);
+    Route::resource('familiares', FamiliarController::class);
+    Route::resource('menus', MenuController::class);
+    Route::get('reservas/{id}/lista', [ReservaController::class, 'lista'])->name('reservas.lista');
+    Route::resource('usuarios', UsuarioController::class);
+    Route::view('/reportes', 'reportes.index')->name('reportes.index');
 
+    Route::get('/entregas/{id}', [EntregaController::class, 'lista'])->name('entregas.lista');
+    Route::patch('/entregas/{reserva}/entregar', [EntregaController::class, 'entregar'])->name('entregas.entregar');
+    Route::resource('entregas', EntregaController::class);  
 
-//Route::resource('empleados', EmpleadoController::class);
+    Route::view('/configuracion', 'configuracion.index')->name('configuracion.index');
 
-Route::get('/empleados', [EmpleadoController::class, 'index'])
-    ->name('empleados.index');
+});
 
-Route::resource('empleados', EmpleadoController::class);
+Route::middleware(['auth', 'role:empleado'])->group(function () {
+    Route::resource('reservas', ReservaController::class);
 
-
-Route::resource('familiares', FamiliarController::class);
-
-
-Route::resource('reservas', ReservaController::class);
-
-Route::resource('menus', MenuController::class);
-
-Route::get('reservas/{id}/lista', [ReservaController::class, 'lista'])->name('reservas.lista');
-Route::resource('reservas', ReservaController::class);
-
-
-Route::resource('usuarios', UsuarioController::class);
-
-Route::view('/reportes', 'reportes.index')
-    ->name('reportes.index');
-
-Route::resource('entregas', EntregaController::class);  
-
-Route::view('/configuracion', 'configuracion.index')
-    ->name('configuracion.index');
-
-
-
-// para los datos que se tiene que realizar la reserva
-Route::get('/mis-reservas', [
-    MisReservasController::class,
-    'index'
-])->name('mis-reservas.index');
+});

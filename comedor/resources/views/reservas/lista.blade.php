@@ -61,28 +61,43 @@
                     <td>empleado</td>         
                     <td>
                         @php
-                            // Verificamos si el empleado tiene reserva para este menú específico
                             $reservaEmpleado = $empleado->reservas()
-                                ->where('plato_id', $menu->id) // Usamos el ID del menú actual
+                                ->where('plato_id', $menu->id)
                                 ->first();
                         @endphp
 
-                        @if($reservaEmpleado && $reservaEmpleado->estado != 'cancelado')
-                            <!-- Botón para CANCELAR reserva -->
-                            <form action="{{ route('reservas.destroy', $reservaEmpleado->id) }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" title="Cancelar Reserva">
-                                    <i class="fas fa-times-circle"></i> Cancelar Plato
-                                </button>
-                            </form>
+                        @if($reservaEmpleado)
+                            @if($reservaEmpleado->estado == 'entregado')
+                                <span class="badge bg-success">Entregado</span>
+                            @elseif($reservaEmpleado->estado == 'cancelado')
+                                <!-- Si está cancelado, permitimos volver a reservar -->
+                                <form action="{{ route('reservas.store') }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    <input type="hidden" name="reservable_id" value="{{ $empleado->id }}">
+                                    <input type="hidden" name="reservable_type" value="{{ get_class($empleado) }}">
+                                    <input type="hidden" name="plato_id" value="{{ $menu->id }}">
+                                    <input type="hidden" name="fecha" value="{{ $menu->fecha }}">
+                                    <button type="submit" class="btn btn-success btn-sm" title="Reservar Plato">
+                                        <i class="fas fa-check-circle"></i> Reservar
+                                    </button>
+                                </form>
+                            @else
+                                <!-- Estado 'reservado' -->
+                                <form action="{{ route('reservas.destroy', $reservaEmpleado->id) }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Cancelar Reserva">
+                                        <i class="fas fa-times-circle"></i> Cancelar Plato
+                                    </button>
+                                </form>
+                            @endif
                         @else
-                            <!-- Botón para AGREGAR reserva (Envía el plato_id usando $menu->id) -->
+                            <!-- No tiene registro de reserva -->
                             <form action="{{ route('reservas.store') }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 <input type="hidden" name="reservable_id" value="{{ $empleado->id }}">
                                 <input type="hidden" name="reservable_type" value="{{ get_class($empleado) }}">
-                                <input type="hidden" name="plato_id" value="{{ $menu->id }}"> <!-- AQUÍ ESTÁ EL ID DEL MENÚ -->
+                                <input type="hidden" name="plato_id" value="{{ $menu->id }}">
                                 <input type="hidden" name="fecha" value="{{ $menu->fecha }}">
                                 <button type="submit" class="btn btn-success btn-sm" title="Reservar Plato">
                                     <i class="fas fa-check-circle"></i> Reservar
@@ -93,7 +108,7 @@
                 </tr>
 
                 <!-- 2. BUCLE DE FAMILIARES -->
-                @foreach($familiares as $familiar)
+               @foreach($familiares as $familiar)
                 <tr>
                     <td>
                         {{ $familiar->nombres }} {{ $familiar->apellidos }}
@@ -101,28 +116,40 @@
                     <td>familiar</td>         
                     <td>
                         @php
-                            // Verificamos si el familiar tiene reserva para este menú específico
                             $reservaFamiliar = $familiar->reservas()
-                                ->where('plato_id', $menu->id) // Usamos el ID del menú actual
+                                ->where('plato_id', $menu->id)
                                 ->first();
                         @endphp
 
-                        @if($reservaFamiliar && $reservaFamiliar->estado != 'cancelado')
-                            <!-- Botón para CANCELAR reserva -->
-                            <form action="{{ route('reservas.destroy', $reservaFamiliar->id) }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" title="Cancelar Reserva">
-                                    <i class="fas fa-times-circle"></i> Cancelar Plato
-                                </button>
-                            </form>
+                        @if($reservaFamiliar)
+                            @if($reservaFamiliar->estado == 'entregado')
+                                <span class="badge bg-success">Entregado</span>
+                            @elseif($reservaFamiliar->estado == 'cancelado')
+                                <form action="{{ route('reservas.store') }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    <input type="hidden" name="reservable_id" value="{{ $familiar->id }}">
+                                    <input type="hidden" name="reservable_type" value="{{ get_class($familiar) }}">
+                                    <input type="hidden" name="plato_id" value="{{ $menu->id }}">
+                                    <input type="hidden" name="fecha" value="{{ $menu->fecha }}">
+                                    <button type="submit" class="btn btn-success btn-sm" title="Reservar Plato">
+                                        <i class="fas fa-check-circle"></i> Reservar
+                                    </button>
+                                </form>
+                            @else
+                                <form action="{{ route('reservas.destroy', $reservaFamiliar->id) }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Cancelar Reserva">
+                                        <i class="fas fa-times-circle"></i> Cancelar Plato
+                                    </button>
+                                </form>
+                            @endif
                         @else
-                            <!-- Botón para AGREGAR reserva -->
                             <form action="{{ route('reservas.store') }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 <input type="hidden" name="reservable_id" value="{{ $familiar->id }}">
                                 <input type="hidden" name="reservable_type" value="{{ get_class($familiar) }}">
-                                <input type="hidden" name="plato_id" value="{{ $menu->id }}"> <!-- AQUÍ ESTÁ EL ID DEL MENÚ -->
+                                <input type="hidden" name="plato_id" value="{{ $menu->id }}">
                                 <input type="hidden" name="fecha" value="{{ $menu->fecha }}">
                                 <button type="submit" class="btn btn-success btn-sm" title="Reservar Plato">
                                     <i class="fas fa-check-circle"></i> Reservar
@@ -132,7 +159,6 @@
                     </td>
                 </tr>
                 @endforeach
-
             </tbody>
         </table>
 

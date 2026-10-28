@@ -12,7 +12,7 @@ class EmpleadoController extends Controller
 {
   public function index()
     {
-        $empleados = User::where('rol','empleado')->get();
+        $empleados = User::where('role','empleado')->get();
 
         return view('empleados.index', compact('empleados'));
     }
