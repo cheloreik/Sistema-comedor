@@ -13,20 +13,18 @@ return new class extends Migration
 {
     Schema::create('familiares', function (Blueprint $table) {
         $table->id();
-
-        $table->foreignId('empleado_id')
-              ->constrained('empleados')
-              ->onDelete('cascade');
-
+        $table->unsignedBigInteger('empleado_id')->nullable();
         $table->string('nombres');
         $table->string('apellidos');
-        $table->string('ci');
+        $table->string('ci')->unique();
         $table->string('parentesco');
         $table->date('fecha_nacimiento');
         $table->string('telefono')->nullable();
-        $table->string('estado')->default('Activo');
+        $table->enum('estado',['activo','inactivo'])->default('Activo');
 
         $table->timestamps();
+
+        $table->foreign('empleado_id')->references('id')->on('users')->onDelete('cascade');
     });
 }
 
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('familiars');
+        Schema::dropIfExists('familiares');
     }
 };

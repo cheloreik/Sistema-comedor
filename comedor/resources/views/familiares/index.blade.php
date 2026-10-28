@@ -13,12 +13,16 @@
     </div>
 
     <div>
-        <button class="btn btn-primary">
-            Nuevo Empleado
-        </button>
+        <a href="{{ route('familiares.create') }}" class="btn btn-primary">
+           + Nuevo Empleado
+        </a>
     </div>
 
 </div>
+
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
 <div class="card">
 
@@ -33,24 +37,7 @@
                     placeholder="Buscar Familiar">
             </div>
 
-            <div class="col-md-3">
-                <select class="form-select">
-                    <option>Todos Familiares</option>
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <select class="form-select">
-                    <option>Todos los estados</option>
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <button class="btn btn-outline-primary w-100">
-                    Filtrar
-                </button>
-            </div>
-
+        
         </div>
 
         <table class="table table-hover">
@@ -58,46 +45,44 @@
             <thead>
 
                 <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
+                    <th>Empleado Titular</th>
+                    <th>Nombres y Apellidos</th>
+                    <th>CI</th>
                     <th>Parentesco</th>
-                    <th>Empleado</th>
+                    <th>Teléfono</th>
                     <th>Estado</th>
                     <th>Acciones</th>
-                </tr>
 
             </thead>
 
-        <tbody>
-    @foreach($familiares as $familiar)
-        <tr>
-            <td>{{ $familiar->codigo }}</td>
-
-            <td>{{ $familiar->nombre }}</td>
-
-            <td>{{ $familiar->parentesco }}</td>
-
-            <td>
-                {{ $familiar->empleado->nombres }}
-                {{ $familiar->empleado->apellidos }}
-            </td>
-
-            <td>
-                <span class="badge bg-success">
-                    {{ $familiar->estado }}
-                </span>
-            </td>
-
-            <td>
-                <a href="#">Editar</a> |
-                <a href="#">Detalle</a>
-            </td>
-        </tr>
-    @endforeach
-</tbody>
+            <tbody>
+                @foreach($familiares as $fam)
+                    <tr>
+                        <td>{{ $fam->empleado->name ?? 'Sin asignar' }} {{ $fam->empleado->lastname ?? 'Sin asignar' }}</td>
+                        <td>{{ $fam->nombres }} {{ $fam->apellidos }}</td>
+                        <td>{{ $fam->ci }}</td>
+                        <td>{{ $fam->parentesco }}</td>
+                        <td>{{ $fam->telefono }}</td>
+                        <td>
+                            <span class="badge bg-{{ $fam->estado == 'activo' ? 'success' : 'secondary' }}">
+                                {{ ucfirst($fam->estado) }}
+                            </span>
+                        </td>
+                        <td>
+                            <a href="{{ route('familiares.edit', $fam->id) }}" class="btn btn-warning btn-sm" title="editar"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <form action="{{ route('familiares.destroy', $fam->id) }}" method="POST" style="display:inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar a ese familiar?')" title="eliminar"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+            @endforeach
+        
+            </tbody>
 
         </table>
-
+        {{ $familiares->links() }}
     </div>
 
 </div>

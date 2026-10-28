@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Empleado;
 use App\Models\Familiar;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FamiliarController extends Controller
@@ -13,95 +14,63 @@ class FamiliarController extends Controller
      */
     public function index()
     {
-    
-        $familiares = Familiar::all();
-
-    return view('familiares.index', compact('familiares'));
-
+        $familiares = Familiar::with('empleado')->paginate(10);
+        return view('familiares.index', compact('familiares'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
 
     public function create()
-{
-    $empleados = Empleado::all();
-
-    return view(
-        'familiares.create',
-        compact('empleados')
-    );
-}
-
-    /**
-     * Store a newly created resource in storage.
-     */
-        public function store(Request $request)
-        {
-            Familiar::create([
-
-                'empleado_id' => $request->empleado_id,
-                'codigo'      => $request->codigo,
-                'nombre'      => $request->nombre,
-                'parentesco'  => $request->parentesco,
-                'estado'      => $request->estado,
-
-            ]);
-
-            return redirect()
-                ->route('familiares.index')
-                ->with('success', 'Familiar registrado correctamente');
-        }
-    /**
-     * Display the specified resource.
-     */
-    public function show(Familiar $familiar)
     {
-        //
+        $empleados = User::all();
+        return view('familiares.create', compact('empleados'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // Mostrar formulario de edición
-    public function edit(Familiar $familiar)
-    {
-        return view('familiares.edit', compact('familiar'));
-    }
-
-    // Actualizar el familiar en la BD
-    public function update(Request $request, Familiar $familiar)
+    public function store(Request $request)
     {
         $request->validate([
-            'codigo' => 'required|string|max:50|unique:familiares,codigo,' . $familiar->id,
-            'nombre' => 'required|string|max:255',
-            'parentesco' => 'required|string|max:100',
-            'estado' => 'required|string|in:Activo,Inactivo',
+            'empleado_id' => 'required|exists:users,id',
+            'nombres' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'ci' => 'required|string|max:50|unique:familiares,ci',
+            'parentesco' => 'required|string|max:50',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:20',
+            'estado' => 'required|in:activo,inactivo',
         ]);
 
-        $familiar->update([
-            'codigo' => $request->codigo,
-            'nombre' => $request->nombre,
-            'parentesco' => $request->parentesco,
-            'estado' => $request->estado,
-        ]);
+        Familiar::create($request->all());
 
-        return redirect()->route('empleados.show', $familiar->empleado_id)
-                         ->with('success', 'Familiar actualizado correctamente.');
+        return redirect()->route('familiares.index')->with('success', 'Familiar registrado con éxito.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-  
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Familiar $familiar)
+    public function edit(Familiar $familiare) // O $familiar
     {
-        //
+        $empleados = User::all();
+        $familiar = $familiare; // Alias por claridad
+        return view('familiares.edit', compact('familiar', 'empleados'));
+    }
+
+    public function update(Request $request, Familiar $familiare)
+    {
+        $request->validate([
+            'empleado_id' => 'required|exists:users,id',
+            'nombres' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
+            'ci' => 'required|string|max:50|unique:familiares,ci,' . $familiare->id,
+            'parentesco' => 'required|string|max:50',
+            'fecha_nacimiento' => 'required|date',
+            'telefono' => 'nullable|string|max:20',
+            'estado' => 'required|in:activo,inactivo',
+        ]);
+
+        $familiare->update($request->all());
+
+        return redirect()->route('familiares.index')->with('success', 'Familiar actualizado con éxito.');
+    }
+
+    public function destroy(Familiar $familiare)
+    {
+        $familiare->delete();
+        return redirect()->route('familiares.index')->with('success', 'Familiar eliminado correctamente.');
     }
 
 

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Familiar extends Model
 {
-    protected $table = 'familiares';    
+    protected $table = 'familiares';
+
     protected $fillable = [
         'empleado_id',
         'nombres',
@@ -17,4 +18,14 @@ class Familiar extends Model
         'telefono',
         'estado'
     ];
+
+
+    public function empleado()
+    {
+        return $this->belongsTo(User::class, 'empleado_id');
+    }
+    public function reservas()
+    {
+        return $this->morphMany(Reserva::class, 'reservable');
+    }
 }

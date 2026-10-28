@@ -150,13 +150,12 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Estado</label>
                         <select name="estado" class="form-select @error('estado') is-invalid @enderror">
-                            <option value="Activo" {{ $empleado->estado=="activo" ? "selected" : ""  }} {{ old('estado', $empleado->estado) == 'Activo' ? 'selected' : '' }}>Activo</option>
-                            <option value="Inactivo" {{ $empleado->estado=="inactivo" ? "selected" : ""  }} {{ old('estado', $empleado->estado) == 'Inactivo' ? 'selected' : '' }}>Inactivo</option>
+                            <option value="Activo" {{ old('estado', $empleado->estado) == 'activo' ? 'selected' : '' }}>Activo</option>
+                            <option value="Inactivo" {{ old('estado', $empleado->estado) == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
                         </select>
                         @error('estado')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <script></script>
                     </div>
 
                     <!-- Contraseña (Opcional en edición) -->
@@ -176,7 +175,7 @@
                     <button type="submit" class="btn btn-primary">
                         Guardar Cambios
                     </button>
-                    <a href="{{ route('empleados.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('empleados.index') }}" class="btn btn-light">
                         Cancelar
                     </a>
                 </div>
