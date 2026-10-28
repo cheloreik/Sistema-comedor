@@ -15,19 +15,11 @@ return new class extends Migration
 
         $table->id();
 
-        $table->date('fecha');
-
-        $table->integer('cupo_disponible');
-
-        $table->string('plato_principal');
-
-        $table->string('guarnicion');
-
-        $table->string('ensalada');
-
-        $table->string('bebida');
-
-        $table->string('postre');
+        $table->date('fecha')->unique();
+        $table->string('foto')->nullable();
+        $table->string('plato');
+        $table->text('descripcion')->nullable();
+        $table->text('adicional')->nullable();
 
         $table->enum('estado', [
             'Borrador',

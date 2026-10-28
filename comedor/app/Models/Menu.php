@@ -8,12 +8,10 @@ class Menu extends Model
 {
     protected $fillable = [
     'fecha',
-    'cupo_disponible',
-    'plato_principal',
-    'guarnicion',
-    'ensalada',
-    'bebida',
-    'postre',
+    'foto',
+    'plato',
+    'descripcion',
+    'adicional',
     'estado'
 ];
 

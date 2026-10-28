@@ -94,6 +94,10 @@
             display: block;
         }
 
+        textarea{
+            min-height: 250px !important; 
+            max-height: 250px !important;
+        }
         /* Escritorio (Pantallas mayores a 768px) */
         @media (min-width: 769px) {
             .sidebar {
