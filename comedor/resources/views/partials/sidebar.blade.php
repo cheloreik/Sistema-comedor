@@ -3,6 +3,10 @@
     <div class="logo-area">
         <h3>U.A.B.</h3>
         <small>ESPACIO DE TRABAJO</small>
+        @php
+    $role = Auth::user()->role; // O como se llame tu columna (ej: $user->tipo)
+@endphp
+
     </div>
 
     <ul class="menu overflow-y-auto">
@@ -19,6 +23,7 @@
                 <i class="fas fa-home"></i> Inicio
             </a>
         </li>
+    @if($role === 'admin')
 
         <li>
             <a href="{{ route('empleados.index') }}"
@@ -38,8 +43,14 @@
                 <i class="fas fa-utensils"></i> Gestión de Menús
             </a>
         </li>
+        <li>
+            <a href="{{ route('entregas.index') }}">
+            <i class="fas fa-box"></i> Entrega de Comidas
+            </a>
+        </li>
 
-    
+    @elseif($role === 'empleado')
+       
         <li>
             <a href="{{ route('reservas.index') }}">
                 <i class="fas fa-calendar-alt"></i> Reservas
@@ -58,25 +69,23 @@
             </a>
         </li>
 
-        <li>
-            <a href="{{ route('entregas.index') }}">
-            <i class="fas fa-box"></i> Entrega de Comidas
-            </a>
-        </li>
-
         <li class="d-none">
             <a href="{{ route('configuracion.index') }}">
                 <i class="fas fa-cog"></i> Configuración
             </a>
         </li>
+    @else
+        
+    @endif
       <li class="nav-item">
             <form method="POST" action="{{ route('logout') }}" id="logout-form">
                 @csrf
             </form>
-            <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-danger">
                     <i class="fas fa-sign-out-alt"></i> Cerrar Session
                 </a>
         </li>
+
 
     </ul>
 
