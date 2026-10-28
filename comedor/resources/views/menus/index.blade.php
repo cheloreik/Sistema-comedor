@@ -11,91 +11,119 @@
         </p>
     </div>
 
-    <button class="btn btn-primary">
-        {{ route('menus.create') }}
-    </button>
+    <a href="{{ route('menus.create') }}" class="btn btn-primary">
+        + agregar menú
+    </a>
 
     
 </div>
 
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 <div class="row">
 
-    <!-- FORMULARIO -->
-    <table class="table">
-
-    <thead>
-        <tr>
-            <th>Fecha</th>
-            <th>Plato Principal</th>
-            <th>Cupos</th>
-            <th>Estado</th>
-        </tr>
-    </thead>
-
-    <tbody>
-
-    @foreach($menus as $menu)
-
-        <tr>
-
-            <td>{{ $menu->fecha }}</td>
-
-            <td>{{ $menu->plato_principal }}</td>
-
-            <td>{{ $menu->cupo_disponible }}</td>
-
-            <td>{{ $menu->estado }}</td>
-
-        </tr>
-
-    @endforeach
-
-    </tbody>
-
-</table>
-
-
-
-
-
-<!-- PLANIFICACIÓN -->
-
-<div class="card shadow-sm mt-4">
+    <div class="card">
 
     <div class="card-body">
 
-        <h4>Planificación de la semana</h4>
+        <div class="row mb-4">
 
-        <div class="row mt-3">
-
-            <div class="col-md-4">
-
-                <div class="border rounded p-3">
-                    <h6>14 OCT · MIÉRCOLES</h6>
-                    <strong>Lasaña de verduras</strong>
-                </div>
-
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="border rounded p-3 bg-light">
-                    <h6>15 OCT · JUEVES</h6>
-                    <strong>Pollo al horno</strong>
-                </div>
-
-            </div>
-
-  S</h6>
-                    <strong>Carne al jugo</strong>
-                </div>
-
+            <div class="col-md-5">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="inputBuscar"
+                    placeholder="Buscar menu">
             </div>
 
         </div>
 
+        <table class="table table-hover" >
+
+            <thead>
+
+                <tr>
+                    <th>Fecha</th>
+                    <th>Imagen</th>
+                    <th>Plato</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="tabla">
+
+  @foreach($menus as $menu)
+
+        <tr>
+
+            <td>{{ date('d-m-Y', strtotime($menu->fecha)) }}</td>
+            <td>
+                @if($menu->foto)
+                    <img src="{{ asset('storage/' . $menu->foto) }}" 
+                        alt="Foto del plato" 
+                        width="50" 
+                        height="50" 
+                        class="img-thumbnail" 
+                        style="object-fit: cover;">
+                @else
+                    <span class="text-muted small">Sin foto</span>
+                @endif
+            </td>
+            <td>{{ $menu->plato }}</td>
+            <td>
+                {!! nl2br(e($menu->descripcion)) !!}
+            </td>
+            <td>
+                <span class="badge bg-{{ $menu->estado=='Publicado' ? 'success text-white' : 'warning text-dark' }}">
+                    {{ $menu->estado }}
+                </span>
+            </td>
+          
+            <td>
+                <a href="{{ route('menus.edit', $menu->id) }}"
+                class="btn btn-light text-primary btn-sm" title="editar">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+
+                <form action="{{ route('menus.destroy', $menu->id) }}"
+                    method="POST"
+                    style="display:inline-block;">
+
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit"
+                            class="btn btn-danger btn-sm" title="eliminar"
+                            onclick="return confirm('¿Desea eliminar este menu?')">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+
+                </form>
+            </td>
+
+
+        </tr>
+
+        @endforeach
+
+             
+
+            </tbody>
+
+        </table>
+
     </div>
 
 </div>
+
+
 
 @endsection

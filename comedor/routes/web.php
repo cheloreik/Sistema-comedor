@@ -55,13 +55,7 @@ Route::resource('empleados', EmpleadoController::class);
 
 
 Route::resource('familiares', FamiliarController::class);
-/*
-Route::get('/empleados/{empleado}/familiares/create', [FamiliarController::class, 'create'])->name('familiares.create');
-Route::post('/empleados/{empleado}/familiares', [FamiliarController::class, 'store'])->name('familiares.store');
 
-Route::get('/familiares/{familiar}/edit', [FamiliarController::class, 'edit'])->name('familiares.edit');
-Route::put('/familiares/{familiar}', [FamiliarController::class, 'update'])->name('familiares.update');
-*/
 
 Route::resource('reservas', ReservaController::class);
 

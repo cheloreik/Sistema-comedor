@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <style>
         body {
@@ -93,6 +94,10 @@
             display: block;
         }
 
+        textarea{
+            min-height: 250px !important; 
+            max-height: 250px !important;
+        }
         /* Escritorio (Pantallas mayores a 768px) */
         @media (min-width: 769px) {
             .sidebar {
@@ -145,6 +150,18 @@
 
         toggleBtn.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu); // Cierra al hacer clic fuera
+    </script>
+    <script>
+        $(document).ready(function() {
+        $("#inputBuscar").on("keyup", function() {
+            let valor = $(this).val().toLowerCase();
+            
+            $("#tabla tr").filter(function() {
+                // Compara el texto de cada fila con lo que se está escribiendo
+                $(this).toggle($(this).text().toLowerCase().indexOf(valor) > -1);
+            });
+        });
+    });
     </script>
 </body>
 </html>
