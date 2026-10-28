@@ -5,7 +5,7 @@
         <small>ESPACIO DE TRABAJO</small>
     </div>
 
-    <ul class="menu ovverflow-y-auto">
+    <ul class="menu overflow-y-auto">
 
 <!--PARA QUE SE MUESTRE NOMBRE Y ROL EN EL SIDEDAR-->
 
@@ -46,13 +46,13 @@
             </a>
         </li>
 
-        <li>
+        <li class="d-none">
             <a href="{{ route('usuarios.index') }}">
                 <i class="fas fa-users"></i> Usuarios
             </a>
         </li>
 
-        <li>
+        <li class="d-none">
             <a href="{{ route('reportes.index') }}">
                 📈 Reportes
             </a>
@@ -64,7 +64,7 @@
             </a>
         </li>
 
-        <li>
+        <li class="d-none">
             <a href="{{ route('configuracion.index') }}">
                 <i class="fas fa-cog"></i> Configuración
             </a>

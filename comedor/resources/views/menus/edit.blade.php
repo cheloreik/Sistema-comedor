@@ -6,6 +6,9 @@
         <div class="card-header">
             <h3>Editar Menú de Almuerzo</h3>
         </div>
+
+        @if($menu->estado == 'Borrador')
+
         <div class="card-body">
             <form action="{{ route('menus.update', $menu->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -63,6 +66,12 @@
                 </div>
             </form>
         </div>
+    @else
+    <div class="p-3">
+        <p class="text-muted">Ya no se puede editar este MENÚ, porque fue publicado.</p>
+        <a href="{{ route('menus.index') }}" class="btn btn-warning">volver</a>
+    </div>
+    @endif
     </div>
 </div>
 @endsection

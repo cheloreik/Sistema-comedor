@@ -22,8 +22,8 @@
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Estado</label>
                         <select name="estado" class="form-select @error('estado') is-invalid @enderror">
-                            <option value="Publicado" {{ old('estado') == 'Publicado' ? 'selected' : '' }}>Publicado</option>
                             <option value="Borrador" {{ old('estado') == 'Borrador' ? 'selected' : '' }}>Borrador</option>
+                            <option value="Publicado" {{ old('estado') == 'Publicado' ? 'selected' : '' }}>Publicado</option>
                         </select>
                         @error('estado')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>

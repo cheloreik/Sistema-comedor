@@ -49,4 +49,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function reservas()
+    {
+        return $this->morphMany(Reserva::class, 'reservable');
+    }
 }

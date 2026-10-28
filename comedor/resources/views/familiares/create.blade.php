@@ -1,91 +1,85 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <h2>Registrar Familiar</h2>
 
-<h2>Nuevo Familiar</h2>
+    <form action="{{ route('familiares.store') }}" method="POST">
+        @csrf
 
-<form action="{{ route('familiares.store') }}" method="POST">
+        <div class="mb-3">
+            <label for="empleado_id" class="form-label">Empleado Titular:</label>
+            <select name="empleado_id" id="empleado_id" class="form-control @error('estado') is-invalid @enderror" required>
+                <option value="">-- Seleccione un empleado --</option>
+                @foreach($empleados as $emp)
+                    <option value="{{ $emp->id }}" {{ old('empleado_id') == $emp->id ? 'selected' : '' }}>{{ $emp->name }} {{ $emp->lastname }}</option>
+                @endforeach
+            </select>
+            @error('empleado_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
-    @csrf
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="nombres" class="form-label">Nombres:</label>
+                <input type="text" name="nombres" class="form-control @error('nombres') is-invalid @enderror" value="{{ old('nombres') }}" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="apellidos" class="form-label">Apellidos:</label>
+                <input type="text" name="apellidos" class="form-control @error('apellidos') is-invalid @enderror" value="{{ old('apellidos') }}" required>
+            </div>
+            @error('apellidos')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
-    <div class="mb-3">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="ci" class="form-label">CI:</label>
+                <input type="text" name="ci" class="form-control @error('ci') is-invalid @enderror" value="{{ old('ci') }}" required>
+                @error('ci')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="parentesco" class="form-label">Parentesco:</label>
+                <input type="text" name="parentesco" class="form-control @error('parentesco') is-invalid @enderror" placeholder="Ej: Cónyuge, Hijo/a" value="{{ old('parentesco') }}" required>
+                @error('parentesco')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento:</label>
+                <input type="date" name="fecha_nacimiento" class="form-control @error('fecha_nacimiento') is-invalid @enderror" value="{{ old('fecha_nacimiento') }}" required>
+                @error('fecha_nacimiento')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+            </div>
+        </div>
 
-        <label>Empleado</label>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="telefono" class="form-label">Teléfono:</label>
+                <input type="text" name="telefono" class="form-control @error('telefono') is-invalid @enderror" value="{{ old('telefono') }}">
+                @error('telefono')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="estado" class="form-label">Estado:</label>
+                <select name="estado" class="form-control @error('estado') is-invalid @enderror" required>
+                    <option value="activo" {{ old('estado') == 'activo' ? 'selected' : '' }}>Activo</option>
+                    <option value="inactivo" {{ old('estado') == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+                </select>
+                @error('estado')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
 
-        <select name="empleado_id"
-                class="form-select">
-
-            @foreach($empleados as $empleado)
-
-                <option value="{{ $empleado->id }}">
-                    {{ $empleado->codigo }}
-                    -
-                    {{ $empleado->nombres }}
-                    {{ $empleado->apellidos }}
-                </option>
-
-            @endforeach
-
-        </select>
-
-    </div>
-
-    <div class="mb-3">
-        <label>Nombres</label>
-        <input type="text"
-               name="nombres"
-               class="form-control">
-    </div>
-
-    <div class="mb-3">
-        <label>Apellidos</label>
-        <input type="text"
-               name="apellidos"
-               class="form-control">
-    </div>
-
-    <div class="mb-3">
-        <label>CI</label>
-        <input type="text"
-               name="ci"
-               class="form-control">
-    </div>
-
-    <div class="mb-3">
-
-        <label>Parentesco</label>
-
-        <select name="parentesco"
-                class="form-select">
-
-            <option>Esposo(a)</option>
-            <option>Hijo(a)</option>
-            <option>Padre</option>
-            <option>Madre</option>
-            <option>Hermano(a)</option>
-
-        </select>
-
-    </div>
-
-    <div class="mb-3">
-        <label>Fecha de Nacimiento</label>
-        <input type="date"
-               name="fecha_nacimiento"
-               class="form-control">
-    </div>
-
-    <div class="mb-3">
-        <label>Teléfono</label>
-        <input type="text"
-               name="telefono"
-               class="form-control">
-    </div>
-
-    <button class="btn btn-success">
-        Guardar Familiar
-    </button>
-
-</form>
-
+        <button type="submit" class="btn btn-success">Guardar Familiar</button>
+        <a href="{{ route('familiares.index') }}" class="btn btn-light">Cancelar</a>
+    </form>
+</div>
 @endsection

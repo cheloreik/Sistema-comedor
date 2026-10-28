@@ -96,6 +96,10 @@ class MenuController extends Controller
 
     public function destroy(Menu $menu)
     {
+        if($menu->fecha <= now()->toDateString() && $menu->estado=="Publicado"){
+            return redirect()->route('menus.index')->with('error', 'No se puede Borrar este menu porque fue publicado.');
+        }
+        
         if ($menu->foto && Storage::disk('public')->exists($menu->foto)) {
             Storage::disk('public')->delete($menu->foto);
         }

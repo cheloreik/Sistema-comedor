@@ -60,9 +60,12 @@ Route::resource('familiares', FamiliarController::class);
 Route::resource('reservas', ReservaController::class);
 
 Route::resource('menus', MenuController::class);
+
+Route::get('reservas/{id}/lista', [ReservaController::class, 'lista'])->name('reservas.lista');
 Route::resource('reservas', ReservaController::class);
+
+
 Route::resource('usuarios', UsuarioController::class);
-Route::resource('menus', MenuController::class);
 
 Route::view('/reportes', 'reportes.index')
     ->name('reportes.index');

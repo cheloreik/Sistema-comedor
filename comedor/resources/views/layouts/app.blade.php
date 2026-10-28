@@ -110,6 +110,42 @@
                 display: none !important; /* Ocultar hamburguesa en escritorio */
             }
         }
+
+
+
+
+        .food-card {
+            border: none;
+            border-radius: 1rem;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.15)!important;
+        }
+        .food-img-wrapper {
+            height: 200px;
+            overflow: hidden;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            position: relative;
+        }
+        .food-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .food-card:hover .food-img-wrapper img {
+            transform: scale(1.05);
+        }
+        .badge-price {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
     </style>
 </head>
 
