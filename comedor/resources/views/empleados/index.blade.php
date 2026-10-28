@@ -13,18 +13,21 @@
     </div>
 
     <div>
-        <button class="btn btn-primary">
             <a href="{{ route('empleados.create') }}"
                 class="btn btn-primary">
                 + Nuevo Empleado
             </a>
-        
 
-
-        </button>
     </div>
 
 </div>
+
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
 <div class="card">
 
@@ -36,30 +39,13 @@
                 <input
                     type="text"
                     class="form-control"
+                    id="inputBuscar"
                     placeholder="Buscar empleado">
-            </div>
-
-            <div class="col-md-3">
-                <select class="form-select">
-                    <option>Todas las áreas</option>
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <select class="form-select">
-                    <option>Todos los estados</option>
-                </select>
-            </div>
-
-            <div class="col-md-2">
-                <button class="btn btn-outline-primary w-100">
-                    Filtrar
-                </button>
             </div>
 
         </div>
 
-        <table class="table table-hover">
+        <table class="table table-hover" >
 
             <thead>
 
@@ -69,13 +55,12 @@
                     <th>Área</th>
                     <th>Cargo</th>
                     <th>Estado</th>
-                    <th>Crédito</th>
                     <th>Acciones</th>
                 </tr>
 
             </thead>
 
-            <tbody>
+            <tbody id="tabla">
 
   @foreach($empleados as $empleado)
 
@@ -84,8 +69,8 @@
             <td>{{ $empleado->codigo }}</td>
 
             <td>
-                {{ $empleado->nombres }}
-                {{ $empleado->apellidos }}
+                {{ $empleado->name }}
+                {{ $empleado->lastname }}
             </td>
 
             <td>{{ $empleado->area }}</td>
@@ -96,32 +81,28 @@
 
 
 <!--para la edicion de los datos empleados-->            
-     <td>
-    <a href="{{ route('empleados.edit', $empleado->id) }}"
-       class="btn btn-warning btn-sm">
-        Editar
-    </a>
+            <td>
+                <a href="{{ route('empleados.edit', $empleado->id) }}"
+                class="btn btn-light text-primary btn-sm" title="editar">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
 
-    <form action="{{ route('empleados.destroy', $empleado->id) }}"
-          method="POST"
-          style="display:inline-block;">
+                <form action="{{ route('empleados.destroy', $empleado->id) }}"
+                    method="POST"
+                    style="display:inline-block;">
 
-        @csrf
-        @method('DELETE')
+                    @csrf
+                    @method('DELETE')
 
-        <button type="submit"
-                class="btn btn-danger btn-sm"
-                onclick="return confirm('¿Desea eliminar este empleado?')">
-            Eliminar
-        </button>
+                    <button type="submit"
+                            class="btn btn-danger btn-sm" title="eliminar"
+                            onclick="return confirm('¿Desea eliminar este empleado?')">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
 
-    </form>
-</td>
-
-                <td>
-                Bs.
-                {{ $empleado->credito_disponible }}
+                </form>
             </td>
+
 
         </tr>
 
