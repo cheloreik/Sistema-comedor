@@ -49,7 +49,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('empleados', EmpleadoController::class);
     Route::resource('familiares', FamiliarController::class);
     Route::resource('menus', MenuController::class);
-    Route::get('reservas/{id}/lista', [ReservaController::class, 'lista'])->name('reservas.lista');
     Route::resource('usuarios', UsuarioController::class);
     Route::view('/reportes', 'reportes.index')->name('reportes.index');
 
@@ -63,5 +62,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:empleado'])->group(function () {
     Route::resource('reservas', ReservaController::class);
+    Route::get('reservas/{id}/lista', [ReservaController::class, 'lista'])->name('reservas.lista');
 
 });
