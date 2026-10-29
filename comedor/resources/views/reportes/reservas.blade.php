@@ -28,7 +28,7 @@
                     <input type="date" id="fecha_fin" name="fecha_fin" class="form-control" required value="{{ date('Y-m-d') }}">
                 </div>
                 <div class="form-group col-12 col-sm-6 col-md-4">
-                    <label for="empleado_id">Empleado / Familiar:</label>
+                    <label for="empleado_id">Empleado:</label>
                     <select id="empleado_id" name="empleado_id" class="form-control">
                         <option value="">-- Todos --</option>
                         @foreach($empleados as $emp)

@@ -14,7 +14,7 @@ class FamiliarController extends Controller
      */
     public function index()
     {
-        $familiares = Familiar::with('empleado')->get();
+        $familiares = Familiar::with('empleado')->paginate(25);
         return view('familiares.index', compact('familiares'));
     }
 
