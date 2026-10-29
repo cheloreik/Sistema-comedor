@@ -48,6 +48,11 @@
             <i class="fas fa-box"></i> Entrega de Comidas
             </a>
         </li>
+        <li class="">
+            <a href="{{ route('reportes.index') }}">
+                <i class="fa-solid fa-chart-line"></i> Reportes
+            </a>
+        </li>
 
     @elseif($role === 'empleado')
        
@@ -63,11 +68,6 @@
             </a>
         </li>
 
-        <li class="d-none">
-            <a href="{{ route('reportes.index') }}">
-                📈 Reportes
-            </a>
-        </li>
 
         <li class="d-none">
             <a href="{{ route('configuracion.index') }}">

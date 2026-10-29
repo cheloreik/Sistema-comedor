@@ -14,13 +14,13 @@ class FamiliarController extends Controller
      */
     public function index()
     {
-        $familiares = Familiar::with('empleado')->paginate(10);
+        $familiares = Familiar::with('empleado')->get();
         return view('familiares.index', compact('familiares'));
     }
 
     public function create()
     {
-        $empleados = User::all();
+        $empleados = User::where('estado','activo')->where('role','empleado')->get();
         return view('familiares.create', compact('empleados'));
     }
 
