@@ -24,5 +24,10 @@ class Reserva extends Model
     {
         return $this->morphTo();
     }
+
+    public function plato()
+    {
+        return $this->belongsTo(Menu::class, 'plato_id');
+    }
     
 }

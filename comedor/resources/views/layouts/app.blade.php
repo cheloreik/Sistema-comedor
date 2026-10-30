@@ -146,6 +146,39 @@
             font-size: 1rem;
             font-weight: 700;
         }
+
+        @media print {
+    /* Ocultar elementos innecesarios al exportar a PDF */
+    body * {
+        visibility: hidden;
+    }
+    #tablaReporte, #tablaReporte *, .card-header h6, .card-header {
+        visibility: visible;
+    }
+    .card-header {
+        border: none !important;
+        background: transparent !important;
+    }
+    #contenedorExportar, form#formFiltroReporte, .sidebar, nav, footer, .navbar {
+        display: none !important;
+    }
+    /* Organizar la tabla para que ocupe toda la hoja PDF */
+    .container-fluid, .card, .card-body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none !important;
+    }
+    #tablaReporte {
+        position: absolute;
+        left: 0;
+        top: 20px;
+        width: 100% !important;
+    }
+}
     </style>
 </head>
 
@@ -199,5 +232,6 @@
         });
     });
     </script>
+     @yield('scripts')
 </body>
 </html>

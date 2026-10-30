@@ -49,13 +49,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('empleados', EmpleadoController::class);
     Route::resource('familiares', FamiliarController::class);
     Route::resource('menus', MenuController::class);
-    Route::get('reservas/{id}/lista', [ReservaController::class, 'lista'])->name('reservas.lista');
     Route::resource('usuarios', UsuarioController::class);
-    Route::view('/reportes', 'reportes.index')->name('reportes.index');
+    Route::resource('/reportes', ReporteController::class);
 
     Route::get('/entregas/{id}', [EntregaController::class, 'lista'])->name('entregas.lista');
     Route::patch('/entregas/{reserva}/entregar', [EntregaController::class, 'entregar'])->name('entregas.entregar');
-    Route::resource('entregas', EntregaController::class);  
+    
+    Route::resource('entregas', EntregaController::class);
+    Route::post('/reportes/reservas/filtrar', [ReporteController::class, 'filtrar'])->name('reportes.reservas.filtrar');
+    Route::get('/reportes/reservas/exportar-excel', [ReporteController::class, 'exportarExcel'])->name('reportes.reservas.excel');
+    Route::get('/reportes/reservas/exportar-pdf', [ReporteController::class, 'exportarPdf'])->name('reportes.reservas.pdf');
 
     Route::view('/configuracion', 'configuracion.index')->name('configuracion.index');
 
@@ -63,5 +66,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:empleado'])->group(function () {
     Route::resource('reservas', ReservaController::class);
+    Route::get('reservas/{id}/lista', [ReservaController::class, 'lista'])->name('reservas.lista');
 
 });

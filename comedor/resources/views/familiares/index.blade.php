@@ -14,7 +14,7 @@
 
     <div>
         <a href="{{ route('familiares.create') }}" class="btn btn-primary">
-           + Nuevo Empleado
+           + Nuevo Familiar
         </a>
     </div>
 
