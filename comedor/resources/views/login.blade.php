@@ -96,6 +96,13 @@
     </style>
 </head>
 
+
+@if(session('alerta'))
+<script>
+    alert("{{ session('alerta') }}");
+</script>
+@endif
+
 <body>
 
 <div class="container-fluid">
@@ -150,6 +157,7 @@
                 </p>
 
 
+
  <form method="POST" action="{{ route('login.post') }}">
 
     @csrf
@@ -162,7 +170,9 @@
             name="email"
             class="form-control"
             required>
+
     </div>
+
 
     <div class="mb-3">
         <label>Contraseña</label>

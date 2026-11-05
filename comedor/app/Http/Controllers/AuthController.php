@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -19,17 +21,35 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credenciales)) {
+    // reestablecer contraS
+    $key = Str::lower($request->email).'|'.$request->ip();
 
-            $request->session()->regenerate();
+if (Auth::attempt($credenciales)) {
 
-            return redirect()->route('dashboard');
-        }
+    RateLimiter::clear($key);
 
-        return back()->withErrors([
-            'email' => 'Correo o contraseña incorrectos'
-        ]);
-    }
+    $request->session()->regenerate();
+
+    return redirect()->route('dashboard');
+}
+
+
+RateLimiter::hit($key);
+
+// Verifica si acaba de llegar a 3
+if (RateLimiter::attempts($key) >= 3) {
+    return back()->with('alerta',
+        'Has superado los 3 intentos permitidos. Recupera sus credenciles en RRHH con el adminstrador.'
+    );
+}
+
+
+return back()->withErrors([
+    'email' => 'Correo o contraseña incorrectos.'
+]);
+
+
+}
 
     public function logout(Request $request)
     {
