@@ -1,30 +1,45 @@
 # Sistema-comedor
-es un proyecto para la materia de ingeniería de sistemas de UAB
-es el Grupo uno Marcelo Felix Flores Nina
-Importante
 
-falta validacion de datos 
+resources/
+└── views/
+    ├── empleados/
+    ├── familiares/
+    ├── pensiones/
+    ├── platos/
+    ├── menus/
+    ├── reservas/
+    └── reportes/
 
-para el testing se instalo phpUnit
+app/
+└── Http/
+    └── Controllers/
+        ├── EmpleadoController.php
+        ├── FamiliarController.php
+        ├── PensionController.php
+        ├── PlatoController.php
+        ├── MenuController.php
+        ├── ReservaController.php
+        ├── ReporteController.php
+        └── AuthController.php
 
-se usara Tinker para administracion de ROLES 
+app/
+└── Models/
+    ├── User.php
+    ├── Empleado.php
+    ├── Familiar.php
+    ├── Pension.php
+    ├── Plato.php
+    ├── Menu.php
+    ├── Reserva.php
+    ├── Consumo.php
+    └── Reporte.php
 
-se creo el CRUD de los empleados 
 
 
-
-<!--PARA QUE SE MUESTRE NOMBRE Y ROL EN EL SIDEDAR-->
-  <!--  <div class="mt-3">
-
-    <strong>{{ auth()->user()->name }}</strong>
-
-    <br>
-
-    <small>
-        {{ auth()->user()->rol }}
-    </small>
-
-    </div>   
-
---> 
-<!--PARA QUE SE MUESTRE NOMBRE Y ROL EN EL SIDEDAR-->
+Backend     : Laravel 12
+Lenguaje    : PHP 8+
+Frontend    : Blade + Bootstrap
+Base Datos  : MySQL
+ORM         : Eloquent ORM
+Testing     : PHPUnit
+Control Ver.: Git / GitHub
