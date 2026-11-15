@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="rumbo-clases-ordenado" name="Diagrama de clases">
+    <mxGraphModel dx="1874" dy="909" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#333333;strokeWidth=1.5;fontSize=21;fontStyle=1;align=center;" value="DIAGRAMA DE CLASES – RUMBO AL CIELO" vertex="1">
+          <mxGeometry height="42" width="800" x="350" y="15" as="geometry" />
+        </mxCell>
+        <mxCell id="config" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;ConfiguracionComedor&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idConfiguracion: int&lt;br&gt;+ horaLimite: Time&lt;br&gt;+ esporadico: float&lt;br&gt;+ minimoPension: int&lt;br&gt;+ diasServicio: (LUNES a JUEVES)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="165" width="285" x="35" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="persona" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Persona&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idPersona: int&lt;br&gt;+ nombre: String&lt;br&gt;+ apellido: String&lt;br&gt;+ telefono: String&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="135" width="285" x="400" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="familiar" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Familiar&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idFamiliar: int&lt;br&gt;+ parentesco (HIJO, HIJA,&lt;br&gt;  CONYUGE, OTRO)&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="115" width="315" x="1110" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="reporte" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;ReporteMensual&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idReporte: int&lt;br&gt;+ mes: int&lt;br&gt;+ anio: int&lt;br&gt;+ tipo (PENSIONADO, EMPLEADO, FAMILIAR)&lt;br&gt;+ fechaGeneracion: DateTime&lt;br&gt;+ totalGeneral: decimal&lt;br&gt;&lt;br&gt;+ generar()&lt;br&gt;+ exportar()&lt;br&gt;+ imprimir()&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="260" width="330" x="35" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Usuario&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idUsuario: int&lt;br&gt;+ correo: String&lt;br&gt;+ contrasena: String&lt;br&gt;+ rol: String&lt;br&gt;+ estado (ACTIVA, DESACTIVADA)&lt;br&gt;+ primerInicio: boolean&lt;br&gt;&lt;br&gt;+ iniciarSesion()&lt;br&gt;+ actualizarDatos()&lt;br&gt;+ cambiarContrasena()&lt;br&gt;+ cambiarEstado()&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="300" width="315" x="400" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="pension" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Pension&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idPension: int&lt;br&gt;+ mes: int&lt;br&gt;+ anio: int&lt;br&gt;+ estado (MODALIDAD PENSION)&lt;br&gt;&lt;br&gt;+ solicitar()&lt;br&gt;+ validarPlazo()&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="175" width="285" x="805" y="365" as="geometry" />
+        </mxCell>
+        <mxCell id="detalle" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;DetalleReporte&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idDetalle: int&lt;br&gt;+ idUsuario: int&lt;br&gt;+ idFamiliar: int&lt;br&gt;+ cantidadAlmuerzos: int&lt;br&gt;+ montoTotal: decimal&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="155" width="330" x="35" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="menu" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;MenuSemanal&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idMenu: int&lt;br&gt;+ fechaInicio: Date&lt;br&gt;+ fechaFin: Date&lt;br&gt;+ publicado: boolean&lt;br&gt;+ estado (ACTIVO, DESACTIVO)&lt;br&gt;&lt;br&gt;+ publicar()&lt;br&gt;+ consultar()&lt;br&gt;+ validarDias()&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="220" width="315" x="400" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="reserva" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Reserva&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idReserva: int&lt;br&gt;+ fecha: Date&lt;br&gt;+ fechaRegistro: DateTime&lt;br&gt;+ tipo (PENSIONADA, OCASIONAL)&lt;br&gt;+ estado (CONFIRMADA, CANCELADA, ...)&lt;br&gt;&lt;br&gt;+ reservar()&lt;br&gt;+ cancelar()&lt;br&gt;+ validarHoraLimite()&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="235" width="315" x="1110" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="plato" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Plato&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idPlato: int&lt;br&gt;+ nombre: String&lt;br&gt;+ descripcion: String&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="115" width="315" x="400" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="asistencia" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Asistencia&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idAsistencia: int&lt;br&gt;+ fechaHora: DateTime&lt;br&gt;+ asistio: boolean&lt;br&gt;&lt;br&gt;+ registrar()&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="145" width="285" x="805" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="tarifa" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;strokeWidth=1.4;fontColor=#111111;fontSize=13;align=left;verticalAlign=top;spacing=6;" value="&lt;table style=&quot;width:100%;border-collapse:collapse;&quot; cellpadding=&quot;5&quot;&gt;&lt;tr&gt;&lt;td style=&quot;text-align:center;font-weight:bold;background-color:#E8EEF5;border-bottom:1px solid #333333;&quot;&gt;Tarifa&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;text-align:left;&quot;&gt;+ idTarifa: int&lt;br&gt;+ tipo (PENSIONADO, NO_PENSIONADO)&lt;br&gt;+ monto: decimal&lt;br&gt;+ vigenteDesde: Date&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;" vertex="1">
+          <mxGeometry height="145" width="315" x="1110" y="970" as="geometry" />
+        </mxCell>
+        <mxCell id="inherit_user" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;startArrow=none;strokeColor=#333333;strokeWidth=1.5;" target="persona" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="inherit_family" edge="1" parent="1" source="familiar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;startArrow=none;strokeColor=#333333;strokeWidth=1.5;" target="persona" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r01" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="reporte" value="genera  |  1 : 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r02" edge="1" parent="1" source="reporte" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="detalle" value="contiene  |  1 : 1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r03" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="pension" value="solicita  |  1 : 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r04" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="menu" value="publica  |  1 : 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r05" edge="1" parent="1" source="menu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="plato" value="contiene  |  1 : 1..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r06" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="reserva" value="realiza  |  1 : 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r07" edge="1" parent="1" source="familiar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="pension" value="pensionado en  |  0..1 : 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r08" edge="1" parent="1" source="familiar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="reserva" value="asigna  |  0..1 : 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r09" edge="1" parent="1" source="plato" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="reserva" value="elige  |  1 : *">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r10" edge="1" parent="1" source="reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="asistencia" value="registra  |  1 : 0..1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r11" edge="1" parent="1" source="reserva" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="tarifa" value="aplica  |  * : 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r12" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.3;fontSize=11;labelBackgroundColor=#FFFFFF;" target="familiar" value="registra  |  1 : 0..*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

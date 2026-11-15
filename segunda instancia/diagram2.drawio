@@ -1,0 +1,142 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="rumbo-casos-uso" name="Casos de uso">
+    <mxGraphModel dx="3274" dy="909" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="employee" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=2;fontColor=#111111;fontSize=14;fontStyle=1;" value="Empleado" vertex="1">
+          <mxGeometry height="145" width="105" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=2;fontColor=#111111;fontSize=14;fontStyle=1;" value="Administrador" vertex="1">
+          <mxGeometry height="145" width="125" x="1200" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="uc01" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU01: Autenticarse&lt;br&gt;en el sistema" vertex="1">
+          <mxGeometry height="78" width="300" x="510" y="125" as="geometry" />
+        </mxCell>
+        <mxCell id="validate" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="Validar&lt;br&gt;credenciales" vertex="1">
+          <mxGeometry height="75" width="210" x="295" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="profile" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="Actualizar datos de perfil&lt;br&gt;y contraseña" vertex="1">
+          <mxGeometry height="78" width="270" x="800" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="uc05" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU05: Consultar&lt;br&gt;menú semanal" vertex="1">
+          <mxGeometry height="78" width="230" x="185" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="uc06" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU06: Reservar&lt;br&gt;almuerzo" vertex="1">
+          <mxGeometry height="78" width="230" x="185" y="515" as="geometry" />
+        </mxCell>
+        <mxCell id="time" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="Verificar&lt;br&gt;horario de reserva" vertex="1">
+          <mxGeometry height="78" width="210" x="485" y="545" as="geometry" />
+        </mxCell>
+        <mxCell id="uc07" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU07: Realizar&lt;br&gt;reserva ocasional" vertex="1">
+          <mxGeometry height="78" width="230" x="185" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="uc08" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU08: Solicitar&lt;br&gt;pensión mensual" vertex="1">
+          <mxGeometry height="78" width="230" x="185" y="775" as="geometry" />
+        </mxCell>
+        <mxCell id="family" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="Gestionar almuerzos&lt;br&gt;de familiares" vertex="1">
+          <mxGeometry height="78" width="205" x="465" y="775" as="geometry" />
+        </mxCell>
+        <mxCell id="uc09" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU09: Anular reserva" vertex="1">
+          <mxGeometry height="78" width="230" x="185" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="uc10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU10: Consultar&lt;br&gt;consumos / reservas" vertex="1">
+          <mxGeometry height="78" width="240" x="185" y="1025" as="geometry" />
+        </mxCell>
+        <mxCell id="uc02" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU02: Registrar&lt;br&gt;usuarios" vertex="1">
+          <mxGeometry height="78" width="230" x="910" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="roles" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU03: Asignar&lt;br&gt;roles de acceso" vertex="1">
+          <mxGeometry height="78" width="210" x="925" y="475" as="geometry" />
+        </mxCell>
+        <mxCell id="uc04" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU04: Activar o&lt;br&gt;desactivar usuarios" vertex="1">
+          <mxGeometry height="78" width="225" x="925" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="days" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="Validar días del menú&lt;br&gt;(lunes a jueves)" vertex="1">
+          <mxGeometry height="78" width="190" x="675" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="uc11" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU11: Publicar&lt;br&gt;y gestionar menú" vertex="1">
+          <mxGeometry height="78" width="225" x="930" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="confirm" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="Confirmar&lt;br&gt;reserva realizada" vertex="1">
+          <mxGeometry height="78" width="190" x="675" y="795" as="geometry" />
+        </mxCell>
+        <mxCell id="uc12" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU12: Registrar&lt;br&gt;asistencia de almuerzos" vertex="1">
+          <mxGeometry height="78" width="230" x="930" y="795" as="geometry" />
+        </mxCell>
+        <mxCell id="period" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="Seleccionar&lt;br&gt;rango de fechas" vertex="1">
+          <mxGeometry height="78" width="190" x="675" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="uc13" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU13: Generar&lt;br&gt;reportes de pensiones&lt;br&gt;y cobros" vertex="1">
+          <mxGeometry height="95" width="235" x="925" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="uc14" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF4FF;strokeColor=#173F70;strokeWidth=1.8;fontColor=#111111;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;" value="CU14: Exportar o&lt;br&gt;imprimir reportes" vertex="1">
+          <mxGeometry height="78" width="220" x="780" y="1035" as="geometry" />
+        </mxCell>
+        <mxCell id="ea1" edge="1" parent="1" source="employee" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc05" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ea2" edge="1" parent="1" source="employee" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc06" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ea3" edge="1" parent="1" source="employee" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc07" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ea4" edge="1" parent="1" source="employee" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc08" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ea5" edge="1" parent="1" source="employee" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc09" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ea6" edge="1" parent="1" source="employee" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aa1" edge="1" parent="1" source="admin" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc02" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aa2" edge="1" parent="1" source="admin" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc04" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aa3" edge="1" parent="1" source="admin" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aa4" edge="1" parent="1" source="admin" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aa5" edge="1" parent="1" source="admin" style="edgeStyle=none;html=1;endArrow=none;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;" target="uc13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r1" edge="1" parent="1" source="uc01" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="validate" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2" edge="1" parent="1" source="profile" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="uc01" value="«extend»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r3" edge="1" parent="1" source="uc06" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="uc05" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r4" edge="1" parent="1" source="uc06" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="time" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r5" edge="1" parent="1" source="uc08" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="family" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r6" edge="1" parent="1" source="uc02" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="roles" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7" edge="1" parent="1" source="uc11" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="days" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r8" edge="1" parent="1" source="uc12" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="confirm" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r9" edge="1" parent="1" source="uc13" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="period" value="«include»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r10" edge="1" parent="1" source="uc13" style="dashed=1;dashPattern=6 4;html=1;endArrow=open;endFill=0;startArrow=none;strokeColor=#173F70;strokeWidth=1.5;fontSize=12;fontStyle=1;labelBackgroundColor=#FFFFFF;" target="uc14" value="«extend»">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
